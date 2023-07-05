@@ -70,6 +70,13 @@ def edit(post_id):
     return render_template('edit.html', post=post)
 
 
+@app.route('/read/<int:post_id>')
+def read(post_id):
+    selected_post = get_post(post_id)
+
+    return render_template('read.html', selected_post=selected_post)
+
+
 @app.route('/<int:post_id>/delete/', methods=('GET', 'POST'))
 def delete(post_id):
     post = get_post(post_id)

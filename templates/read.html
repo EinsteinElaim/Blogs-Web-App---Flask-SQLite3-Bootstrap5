@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+<h1>{% block title %} Read: "{{ selected_post['title'] }}" {% endblock %}</h1>
+
+{% block content %}
+    <div class="post" style="background-color:lightblue; padding:10px; border-radius:5px;">
+        <div class="post-title" style="background-color:teal; padding:10px; border-radius:10px;">
+            <h2> Post ID: "{{ selected_post['id'] }}" Titled: "{{ selected_post['title'] }}" </h2>
+            <h5> Blog Created at: "{{ selected_post['created'] }}" </h5>
+        </div>
+        <div class="post-content" style="background-color:pink; border-radius:10px; padding:10px;">
+            <p>Blog content:</p>
+            <p>"{{ selected_post['content'] }}"</p>
+        </div>
+        <div class="controls" style="border-radius:10px; background-color:cyan;padding:10px;">
+            <form action="{{ url_for('index') }}">
+                <input type="submit" value="Back to Posts List" onclick="return confirm('Are you sure you want to go back to all posts listing?')">
+            </form>
+        </div>
+    </div>
+{% endblock %}
