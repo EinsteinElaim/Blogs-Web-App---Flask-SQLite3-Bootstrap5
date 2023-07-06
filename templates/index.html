@@ -4,16 +4,20 @@
     <h1>{% block title %} Posts {% endblock %}</h1>
     <h2>Welcome to Posts FlaskApp!</h2>
 <!--    <h3>{{ utc_dt }}</h3>-->
-    {% for post in posts %}
-        <div class="post">
-            <p>Counter : {{ loop.index }}</p>
-            <p>Post ID: {{ post['id'] }}</p>
-            <p>{{ post['created'] }}</p>
-            <p>{{ post['title'] }}</p>
-            <p>{{ post['content'] }}</p>
-            <a href="{{ url_for('read', post_id=post['id']) }}">Read more..</a>
-            <a href="{{ url_for('edit', post_id=post['id']) }}">Edit</a>
-            <a href="{{ url_for('delete', post_id=post['id']) }}">Delete</a>
-        </div>
-    {% endfor %}
+    <div class="col-sm-12 row" style="text-align: center;">
+        {% for post in posts %}
+            <div class=" col-sm-4 card" style="width: 18rem; margin:10px!important; float: none;">
+                <p>Counter : {{ loop.index }}</p>
+                <p>Post ID: {{ post['id'] }}</p>
+                <div class="card-body">
+                    <h5 class="card-title">{{ post['title'] }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ post['created'] }}</h6>
+                    <p class="card-text">{{ post['content'] }}</p>
+                    <a href="{{ url_for('read', post_id=post['id']) }}" class="card-link">Read more..</a>
+                    <a href="{{ url_for('edit', post_id=post['id']) }}" class="card-link">Edit</a>
+                    <a href="{{ url_for('delete', post_id=post['id']) }}" class="card-link">Delete</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
